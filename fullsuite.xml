@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="all-tests">
+
+    <test name="add">
+        <classes>
+            <class name="hw1.add.AddTests"></class>
+        </classes>
+    </test>
+
+    <test name="subtract">
+        <classes>
+            <class name="hw1.subtract.SubtractTests"></class>
+        </classes>
+    </test>
+
+    <test name="multiply">
+        <classes>
+            <class name="hw1.multiply.MultiplyTests"></class>
+        </classes>
+    </test>
+
+    <test name="divide">
+        <classes>
+            <class name="hw1.divide.DivideTests"></class>
+        </classes>
+    </test>
+
+</suite>
