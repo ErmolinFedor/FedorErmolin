@@ -14,4 +14,11 @@ public class DivideTests extends BaseTests {
         double actual = calculator.div(a, b);
         assertEquals(actual, expected, "Wrong divide");
     }
+
+    @Test(dataProvider = "divideExceptionData", dataProviderClass = DivideData.class,
+            expectedExceptions = NumberFormatException.class)
+    public void divideExceptionTest(long a, long b, long expected) {
+        long actual = calculator.div(a, b);
+        assertEquals(actual, expected, "Wrong divide");
+    }
 }
