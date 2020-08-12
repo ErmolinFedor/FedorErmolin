@@ -78,6 +78,15 @@
 
     <profiles>
         <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <testngsuit>defaultsuite.xml</testngsuit>
+            </properties>
+        </profile>
+        <profile>
             <id>dividemultiply</id>
             <properties>
                 <testngsuit>multiplydividetsuite.xml</testngsuit>
