@@ -74,6 +74,18 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
     </dependencies>
 
     <profiles>
@@ -96,6 +108,12 @@
             <id>full</id>
             <properties>
                 <testngsuit>fullsuite.xml</testngsuit>
+            </properties>
+        </profile>
+        <profile>
+            <id>chrome</id>
+            <properties>
+                <testngsuit>chromesuite.xml</testngsuit>
             </properties>
         </profile>
     </profiles>
