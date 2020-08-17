@@ -3,6 +3,7 @@ package hw2.ex2;
 import hw2.base.BaseTests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -94,9 +95,8 @@ public class Exercise2 extends BaseTests {
     private void performLogin() {
         //username: Roman
         //pass: Jdi1234
-        driver.switchTo().defaultContent();
-        driver.findElement(By.cssSelector("img#user-icon")).click();
-        driver.findElement(By.cssSelector("#name")).sendKeys("Roman");
+        driver.findElement(By.className("profile-photo")).click();
+        driver.findElement(By.id("name")).sendKeys("Roman");
         driver.findElement(By.cssSelector("#password")).sendKeys("Jdi1234");
         driver.findElement(By.id("login-button")).click();
     }
@@ -173,11 +173,12 @@ public class Exercise2 extends BaseTests {
     }
 
     private void selectRadio() {
-        driver.findElement(By.cssSelector("* label:nth-child(4) > input[type=radio]")).click();
+        driver.findElement(By.xpath("//div[3]//label[4]//input[1]")).click();
     }
 
     private void selectYellow() {
-        driver.findElement(By.cssSelector("*  select > option:nth-child(4)")).click();
+        Select select = new Select(driver.findElement(By.cssSelector("[class='colors'] select")));
+        select.selectByVisibleText("Yellow");
     }
 
 }

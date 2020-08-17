@@ -64,9 +64,8 @@ public class Exercise1 extends BaseTests {
     private void performLogin() {
         //username: Roman
         //pass: Jdi1234
-        driver.switchTo().defaultContent();
-        driver.findElement(By.cssSelector("img#user-icon")).click();
-        driver.findElement(By.cssSelector("#name")).sendKeys("Roman");
+        driver.findElement(By.className("profile-photo")).click();
+        driver.findElement(By.id("name")).sendKeys("Roman");
         driver.findElement(By.cssSelector("#password")).sendKeys("Jdi1234");
         driver.findElement(By.id("login-button")).click();
     }
