@@ -33,6 +33,22 @@ public class DifferentElementsPage {
     @FindBy(css = "button[class=uui-button], [type=button]")
     private List<WebElement> buttons;
 
+    public int checkboxesSize() {
+        return checkboxes.size();
+    }
+
+    public int radiosSize() {
+        return radios.size();
+    }
+
+    public int selectsSize() {
+        return selects.size();
+    }
+
+    public int buttonsSize() {
+        return buttons.size();
+    }
+
     public String getAllElements() {
         StringBuilder sb = new StringBuilder();
         sb.append("checkboxes = ").append(checkboxes.size())

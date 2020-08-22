@@ -1,71 +1,71 @@
 package hw3;
 
-import hw3.beans.Color;
 import hw3.base.BaseTests;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import hw3.pages.DifferentElementsPage;
 import hw3.pages.HomePage;
 
 public class Exercise2 extends BaseTests {
     @Test
     public void test() {
-        SoftAssert softAssert = new SoftAssert();
-        HomePage homePage = new HomePage(driver); //Open test site by URL
-        softAssert.assertEquals(homePage.getTitle(),
-                property.getProperty("homePageTitle"),
-                "Wrong Browser title");
 
-        homePage.logIn(property.getProperty("login"), property.getProperty("password"));
-        softAssert.assertEquals(homePage.getUserName(),
-                property.getProperty("userNameTitle"),
-                "Wrong userName");
 
-        softAssert.assertEquals(homePage.getHeaderMenu().getExistsSubServiceElements(),
-                property.getProperty("serviceSubHeader"));
 
-        softAssert.assertEquals(homePage.getLeftSideMenu().getExistsSubServiceElements(),
-                property.getProperty("serviceSub"));
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //Open test site by URL
+        HomePage homePage = new HomePage(driver);
+        //Assert Browser title
+        assertHomePageTitle(homePage);
+        //Perform login
+        logInUser(homePage);
+        //Assert User name in the left-top side of screen that user is loggined
+        assertUserName(homePage);
+        //Click on "Service" subcategory in the header and check that drop down contains options
+        assertHasHeaderSubServiceElements(homePage);
+        //Click on Service subcategory in the left section and check that drop down contains options
+        assertHasLeftMenuSubServiceElements(homePage);
+        //Open through the header menu Service -> Different Elements Page
         DifferentElementsPage differentElementsPage =
-                homePage.getLeftSideMenu().clickDifferentElement();
-
-        softAssert.assertEquals(differentElementsPage.getAllElements(),
-                property.getProperty("difInterfaces"),
-                "Wrong number of elements");
-
-        softAssert.assertTrue(differentElementsPage
-                        .getRightSideBar()
-                        .isDisplayedRightSection(),
-                "Right section isn't displayed");
-
-        softAssert.assertTrue(differentElementsPage.getLeftSideMenu()
-                        .isDisplayedLeftSection(),
-                "Left section isn't displayed");
-
-        differentElementsPage.selectCheckbox(property.getProperty("selectCheckboxes"));
-        softAssert.assertEquals(differentElementsPage.getSelectedCheckBoxes(),
-                differentElementsPage.getRightSideBar()
-        .getSelectedFromLog(2),
-                "Wrong log of selected. Wrong selected checkboxes");
-
-        differentElementsPage.selectRadio("Selen");
-        softAssert.assertEquals(differentElementsPage.getSelectedRadio(),
-                differentElementsPage.getRightSideBar()
-                        .getSelectedFromLog(1),
-                "Wrong log of selected. Wrong selected radio");
-
-        differentElementsPage.selectColor(Color.Yellow);
-        softAssert.assertEquals(differentElementsPage.getSelectedSelect(),
-                differentElementsPage.getRightSideBar()
-                .getSelectedFromLog(1),
-                "Wrong log of selected. Wrong selected color");
-
-        differentElementsPage.selectCheckbox(property.getProperty("selectCheckboxes"));
-        softAssert.assertEquals(differentElementsPage.getSelectedCheckBoxes(),
-                differentElementsPage.getRightSideBar()
-                        .getSelectedFromLog(2),
-                "Wrong log of selected. Wrong unselected checkboxes");
-        softAssert.assertAll();
+                homePage.getHeaderMenu().differentElementsPageClick();
+        //Check interface on Different elements page, it contains all needed elements
+        assertDifferentPageInterfaces(differentElementsPage);
+        //Assert that there is Right Section
+        assertDifPageIsDisplayedRightSection(differentElementsPage);
+        //Assert that there is Left Section
+        assertDifPageIsDisplayedLeftSection(differentElementsPage);
+        //Select checkboxes
+        selectUnselectCheckbox(differentElementsPage);
+        //Assert that for each checkbox there is an individual log row
+        // and value is corresponded to the status of checkbox.
+        assertSelectedCheckBoxes(differentElementsPage);
+        //Select radio
+        selectRadioSelen(differentElementsPage);
+        //Assert that for radiobutton there is a log row
+        // and value is corresponded to the status of radiobutton.
+        assertSelectedRadio(differentElementsPage);
+        //Select in dropdown
+        selectColor(differentElementsPage);
+        //Assert that for dropdown there is a log row
+        // and value is corresponded to the selected value.
+        assertSelectedColor(differentElementsPage);
+        //Unselect and assert checkboxes
+        selectUnselectCheckbox(differentElementsPage);
+        //Assert that for each checkbox there is an individual log row
+        // and value is corresponded to the status of checkbox.
+        assertSelectedCheckBoxes(differentElementsPage);
     }
 }

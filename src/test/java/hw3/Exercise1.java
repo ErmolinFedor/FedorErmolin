@@ -5,51 +5,41 @@ import org.testng.annotations.Test;
 import hw3.pages.HomePage;
 import hw3.pages.SecondFrame;
 
-import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.assertEquals;
-
 public class Exercise1 extends BaseTests {
     @Test
     public void test() {
-
-        HomePage homePage = new HomePage(driver); //Open test site by URL
-        assertEquals(homePage.getTitle(),
-                property.getProperty("homePageTitle"),
-                "Wrong Browser title");
-
-        homePage.logIn(property.getProperty("login"), property.getProperty("password"));
-        assertEquals(homePage.getUserName(),
-                property.getProperty("userNameTitle"),
-                "Wrong userName");
-
-        assertEquals(homePage.getTitle(),
-                property.getProperty("homePageTitle"),
-                "Wrong Browser title");
-
-        assertEquals(homePage.getTextHeaderItems(),
-                property.getProperty("menuButtons"),
-                "Wrong header items");
-        assertEquals(homePage.getImgCount(),
-                Integer.parseInt(property.getProperty("imgCount")),
-                "Incorrect number of images on page");
-        assertTrue(homePage.isTextBelowImages());
-
-        assertEquals(homePage.getMainText(), property.getProperty("mainText"),
-                "Wrong text of header");
-
-        assertTrue(homePage.iframeExists());
-        SecondFrame secondFrame = homePage.moveToSecondIframe();
-        assertTrue(secondFrame.logoExists());
+        //Open test site by URL
+        HomePage homePage = new HomePage(driver);
+        //Assert Browser title
+        assertHomePageTitle(homePage);
+        //Perform login
+        logInUser(homePage);
+        //Assert User name in the left-top side of screen that user is loggined
+        assertUserName(homePage);
+        //Assert Browser title
+        assertHomePageTitle(homePage);
+        //Assert that there are 4 items on the header section
+        // are displayed and they have proper texts
+        assertTextHeaderItems(homePage);
+        //Assert that there are 4 images on the Index Page and they are displayed
+        assertImgCount(homePage);
+        //Assert that there are 4 texts on the Index Page under icons and they have proper text
+        assertTextBelowImages(homePage);
+        //Assert a text of the main headers
+        assertMainText(homePage);
+        //Assert that there is the iframe in the center of page
+        assertIsIframeExists(homePage);
+        //Switch to the iframe and check that there is Epam logo in the left top conner of iframe
+        SecondFrame secondFrame = assertIsLogoExists(homePage);
+        //Switch to original window back
         homePage = secondFrame.switchToParent();
-
-        assertEquals(homePage.getSubHeaderText(),
-                property.getProperty("subHeaderTxt"),
-                "Wrong text of the sub header");
-        assertTrue(homePage.isDisplayedLink(), "Link isn't displayed");
-        assertEquals(homePage.getSubHeaderLink(),
-                property.getProperty("link"), "Link hasn't proper value");
-        assertTrue(homePage.isDisplayedLeftSection(),
-                "Left section isn't displayed");
-        assertTrue(homePage.isDisplayedFooter(), "Footer isn't displayed");
+        //Assert a text of the sub header
+        assertSubHeaderText(homePage);
+        //Assert that JDI GITHUB is a link and has a proper URL
+        assertSubHeaderLink(homePage);
+        //Assert that there is Left Section
+        assertsIsDisplayedLeftSection(homePage);
+        //Assert that there is Footer
+        assertIsDisplayedFooter(homePage);
     }
 }

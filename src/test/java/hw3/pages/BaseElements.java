@@ -20,6 +20,9 @@ public class BaseElements {
         leftSideMenu = new LeftSideMenu(driver);
     }
 
+    @FindBy(css = "img#epam-logo")
+    private WebElement logo;
+
     @FindBy(xpath = "//a[contains(text(), 'Service')]")
     private WebElement service;
 
@@ -45,6 +48,10 @@ public class BaseElements {
 
     public String getTextHeaderItems() {
         return headerItems.getText();
+    }
+
+    public boolean logoExists() {
+        return logo != null;
     }
 
 

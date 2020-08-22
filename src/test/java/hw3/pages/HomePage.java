@@ -74,7 +74,6 @@ public class HomePage extends BaseElements {
     }
 
     public int getImgCount() {
-        System.out.println("List images" + imagesList.size());
         imagesList.size();
         return imagesList.size();
     }
