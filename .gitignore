@@ -2,12 +2,13 @@
 ## Idea
 #############
 target/
-.allure
-allure-results
+.allure/
+allure-results/
 src/test/hw1/
 .idea/
 .idea
 .allure/
+.allure
 .repository/
 *.iml
 *.iws
@@ -16,7 +17,6 @@ src/test/hw1/
 *.info
 *.properties
 *.jar
-
 
 /out/
 /Instruction.png
