@@ -15,7 +15,6 @@ src/test/java/hw1/
 *.jrtc
 *.class
 *.info
-*.properties
 *.jar
 
 
