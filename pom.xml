@@ -121,29 +121,12 @@
     </dependencies>
 
     <profiles>
+
         <profile>
             <id>default</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <properties>
-                <testngsuit>src/test/resources/defaultsuite.xml</testngsuit>
-            </properties>
-        </profile>
-        <profile>
-            <id>dividemultiply</id>
-            <properties>
-                <testngsuit>src/test/resources/multiplydividetsuite.xml</testngsuit>
-            </properties>
-        </profile>
-        <profile>
-            <id>full</id>
-            <properties>
-                <testngsuit>src/test/resources/fullsuite.xml</testngsuit>
-            </properties>
-        </profile>
-        <profile>
-            <id>chrome</id>
             <properties>
                 <testngsuit>src/test/resources/chromesuite.xml</testngsuit>
             </properties>
