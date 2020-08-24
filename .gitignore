@@ -2,6 +2,9 @@
 ## Idea
 #############
 target/
+.allure
+allure-results
+src/test/hw1/
 .idea/
 .idea
 .allure/
