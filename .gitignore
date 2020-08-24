@@ -4,7 +4,7 @@
 target/
 .allure/
 allure-results/
-src/test/java/hw1/
+src/test/hw1/
 .idea/
 .idea
 .allure/
@@ -17,6 +17,7 @@ src/test/java/hw1/
 *.info
 *.properties
 *.jar
+
 
 /out/
 /Instruction.png
