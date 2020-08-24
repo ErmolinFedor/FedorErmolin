@@ -13,7 +13,14 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <testng.version>7.3.0</testng.version>
-        <testngsuit>defaultsuite.xml</testngsuit>
+        <testngsuit>src/test/resources/defaultsuite.xml</testngsuit>
+        <allure.version>2.13.2</allure.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+        <aspectj.version>1.9.5</aspectj.version>
+        <slf4j.version>1.7.30</slf4j.version>
+        <selenium-chrome.version>3.141.59</selenium-chrome.version>
+        <selenium-support.version>3.141.59</selenium-support.version>
+        <aspectjweaver.version>1.9.5</aspectjweaver.version>
     </properties>
 
 
@@ -48,18 +55,25 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>${testngsuit}</suiteXmlFile>
                     </suiteXmlFiles>
-
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
-
         </plugins>
     </build>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -77,13 +91,33 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-chrome-driver</artifactId>
-            <version>3.141.59</version>
+            <version>${selenium-chrome.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
-            <version>3.141.59</version>
+            <version>${selenium-support.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjweaver.version}</version>
         </dependency>
 
     </dependencies>
@@ -95,28 +129,41 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <testngsuit>defaultsuite.xml</testngsuit>
+                <testngsuit>src/test/resources/defaultsuite.xml</testngsuit>
             </properties>
         </profile>
         <profile>
             <id>dividemultiply</id>
             <properties>
-                <testngsuit>multiplydividetsuite.xml</testngsuit>
+                <testngsuit>src/test/resources/multiplydividetsuite.xml</testngsuit>
             </properties>
         </profile>
         <profile>
             <id>full</id>
             <properties>
-                <testngsuit>fullsuite.xml</testngsuit>
+                <testngsuit>src/test/resources/fullsuite.xml</testngsuit>
             </properties>
         </profile>
         <profile>
             <id>chrome</id>
             <properties>
-                <testngsuit>chromesuite.xml</testngsuit>
+                <testngsuit>src/test/resources/chromesuite.xml</testngsuit>
             </properties>
         </profile>
     </profiles>
 
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>

@@ -4,13 +4,19 @@
 
     <test name="ex1">
         <classes>
-            <class name="hw3.Exercise1"></class>
+            <class name="hw4.Exercise1"></class>
         </classes>
     </test>
 
     <test name="ex2">
         <classes>
-            <class name="hw3.Exercise2"></class>
+            <class name="hw4.Exercise2"></class>
+        </classes>
+    </test>
+
+    <test name="ex3">
+        <classes>
+            <class name="hw4.FailTest"></class>
         </classes>
     </test>
 </suite>

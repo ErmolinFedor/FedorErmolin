@@ -4,6 +4,9 @@
 target/
 .idea/
 .idea
+.allure/
+allure-results/
+**/allure-results
 .repository/
 *.iml
 *.iws
