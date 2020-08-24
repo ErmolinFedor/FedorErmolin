@@ -18,8 +18,6 @@ src/test/java/hw1/
 *.properties
 *.jar
 
-
-
 /out/
 /Instruction.png
 /out.log
