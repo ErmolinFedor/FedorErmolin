@@ -14,6 +14,6 @@ public class FailTest extends BaseTests {
     public void testHomePageFail() {
         HomePage homePage = openUrl();
         //Assert Browser title
-        assertHomePageTitle(homePage);
+        assertWrongHomePageTitle(homePage);
     }
 }
