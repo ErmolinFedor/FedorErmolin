@@ -15,7 +15,7 @@ public class RightSideBar {
     @FindBy(name = "log-sidebar")
     private WebElement logSidebar;
 
-    @FindBy(css = "[class='panel-body-list logs'] li")
+    @FindBy(css = ".panel-body-list.logs li")
     private List<WebElement> bodyLog;
 
     public RightSideBar(WebDriver driver) {

@@ -21,8 +21,8 @@ public class HomePage extends BaseElements {
     public HomePage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        PageFactory.initElements(driver, this);
         driver.get("https://jdi-testing.github.io/jdi-light/index.html");
+        PageFactory.initElements(driver, this);
         leftSideMenu = new LeftSideMenu(driver);
         headerMenu = new HeaderMenu(driver);
     }

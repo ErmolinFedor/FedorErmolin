@@ -15,14 +15,10 @@ public class TestListener implements ITestListener {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
-    private static String getTestMethodName(ITestResult itestResult) {
-        return itestResult.getMethod().getConstructorOrMethod().getName();
-    }
-
     @Override
     public void onTestFailure(ITestResult result) {
-        WebDriver driver = ((BaseTests)result.getInstance()).getDriver();
-        if (driver instanceof WebDriver) {
+        WebDriver driver = (WebDriver) result.getTestContext().getAttribute("driver");
+        if (driver != null) {
             saveScreenShot(driver);
         }
     }

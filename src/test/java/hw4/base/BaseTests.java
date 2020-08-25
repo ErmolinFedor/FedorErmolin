@@ -8,6 +8,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.asserts.SoftAssert;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -28,9 +30,9 @@ public class BaseTests {
     SoftAssert softAssert;
 
     @BeforeClass
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "D:/chromedriver_win32/chromedriver.exe");
-        driver = new ChromeDriver(getChromeOptions());
+    public void setUp(ITestContext context) {
+        driver = DriverFactory.getDriver();
+        context.setAttribute("driver", driver);
         softAssert = new SoftAssert();
         try {
             property.load(
