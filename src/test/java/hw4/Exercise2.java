@@ -1,15 +1,21 @@
-package hw3;
+package hw4;
 
-import hw3.base.BaseTests;
+import hw4.base.BaseTests;
+import hw4.base.TestListener;
+import hw4.pages.DifferentElementsPage;
+import hw4.pages.HomePage;
+import io.qameta.allure.Feature;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import hw3.pages.DifferentElementsPage;
-import hw3.pages.HomePage;
 
+@Feature("Different Elements Page")
+@Listeners(TestListener.class)
 public class Exercise2 extends BaseTests {
+
     @Test
-    public void test() {
+    public void testDifferentElements() {
         //Open test site by URL
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = openUrl();
         //Assert Browser title
         assertHomePageTitle(homePage);
         //Perform login
