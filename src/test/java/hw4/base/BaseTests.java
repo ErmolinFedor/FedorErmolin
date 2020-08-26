@@ -18,6 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -27,6 +28,7 @@ import static org.testng.Assert.assertTrue;
 public class BaseTests {
     protected WebDriver driver;
     protected Properties property = new Properties();
+    protected ResourceBundle resourceBundle;
     SoftAssert softAssert;
 
     @BeforeClass
@@ -34,6 +36,8 @@ public class BaseTests {
         driver = DriverFactory.getDriver();
         context.setAttribute("driver", driver);
         softAssert = new SoftAssert();
+        Locale locale = Locale.ENGLISH;
+        resourceBundle = ResourceBundle.getBundle("hw3config", locale);
         try {
             property.load(
                     new InputStreamReader(
@@ -65,13 +69,16 @@ public class BaseTests {
     @Step("Assert Browser title")
     public void assertHomePageTitle(HomePage homePage) {
         assertEquals(homePage.getTitle(),
-                property.getProperty("homePageTitle"),
+                resourceBundle.getString("homePageTitle"),
+                //property.getProperty("homePageTitle"),
                 "Wrong Browser title");
     }
 
     @Step("Perform login")
     public void logInUser(HomePage homePage) {
-        homePage.logIn(property.getProperty("login"), property.getProperty("password"));
+        homePage.logIn(
+                resourceBundle.getString("login"),
+                resourceBundle.getString("password"));
     }
 
     @Step("Assert User name in the left-top side of screen that user is loggined")

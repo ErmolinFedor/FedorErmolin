@@ -18,8 +18,6 @@
         <allure-maven.version>2.10.0</allure-maven.version>
         <aspectj.version>1.9.5</aspectj.version>
         <slf4j.version>1.7.30</slf4j.version>
-        <selenium-chrome.version>3.141.59</selenium-chrome.version>
-        <selenium-support.version>3.141.59</selenium-support.version>
         <aspectjweaver.version>1.9.5</aspectjweaver.version>
         <webdrivermanager.version>4.2.0</webdrivermanager.version>
         <selenium-java.version>3.141.59</selenium-java.version>
@@ -71,12 +69,7 @@
                         <version>${aspectj.version}</version>
                     </dependency>
                 </dependencies>
-            </plugin><plugin>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-maven</artifactId>
-            <version>${allure-maven.version}</version>
-        </plugin>
-
+            </plugin>
         </plugins>
     </build>
 
