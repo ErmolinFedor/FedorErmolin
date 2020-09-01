@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RightSideBar {
-    private WebDriver driver;
 
     @FindBy(name = "log-sidebar")
     private WebElement logSidebar;
@@ -19,7 +18,6 @@ public class RightSideBar {
     private List<WebElement> bodyLog;
 
     public RightSideBar(WebDriver driver) {
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 

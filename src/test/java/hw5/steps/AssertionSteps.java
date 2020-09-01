@@ -20,9 +20,9 @@ public class AssertionSteps {
             new UserTable(Context.getInstance().getDriver());
 
     @Then("Name should be displayed and equals to expected username {string}")
-    public void name_should_be_displayed_and_equals_to_expected_username(String string) {
+    public void name_should_be_displayed_and_equals_to_expected_username(String username) {
         assertEquals(differentElementsPage.getHeaderMenu().getUserName(),
-                string);
+                username);
     }
 
     @Then("Log rows are displayed and checkbox name and its status are corresponding to selected")
@@ -50,8 +50,8 @@ public class AssertionSteps {
     }
 
     @Then("{string} page should be opened")
-    public void page_should_be_opened(String string) {
-        assertEquals(userTable.getPageNameText(), string);
+    public void page_should_be_opened(String pageTitle) {
+        assertEquals(userTable.getPageNameText(), pageTitle);
     }
 
     @Then("{int} Number Type Dropdowns should be displayed on Users Table on User Table Page")
@@ -103,8 +103,8 @@ public class AssertionSteps {
     }
 
     @Then("One log row has {string} text in log section")
-    public void one_log_row_has_text_in_log_section(String string) {
-        assertTrue(userTable.getRightSideBar().logContainsLine(string));
+    public void one_log_row_has_text_in_log_section(String expectedLog) {
+        assertTrue(userTable.getRightSideBar().logContainsLine(expectedLog));
     }
 
 }

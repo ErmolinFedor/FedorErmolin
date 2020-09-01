@@ -1,7 +1,5 @@
 package hw5.pages;
 
-import hw5.pages.components.HeaderMenu;
-import hw5.pages.components.LeftSideMenu;
 import hw5.pages.components.RightSideBar;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,19 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserTable extends BaseElements {
-    private HeaderMenu headerMenu;
-    private LeftSideMenu leftSideMenu;
     private RightSideBar rightSideBar;
-    private WebDriver driver;
-
-    public UserTable(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-        headerMenu = new HeaderMenu(driver);
-        leftSideMenu = new LeftSideMenu(driver);
-        rightSideBar = new RightSideBar(driver);
-    }
 
     @FindBy(id = "ivan")
     private WebElement ivanCheckbox;
@@ -47,16 +33,14 @@ public class UserTable extends BaseElements {
     @FindBy(xpath = "//td[1]")
     private List<WebElement> numberColumn;
 
+    public UserTable(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+        rightSideBar = new RightSideBar(driver);
+    }
+
     public void clickIvanCheckbox() {
         ivanCheckbox.click();
-    }
-
-    public HeaderMenu getHeaderMenu() {
-        return headerMenu;
-    }
-
-    public LeftSideMenu getLeftSideMenu() {
-        return leftSideMenu;
     }
 
     public RightSideBar getRightSideBar() {

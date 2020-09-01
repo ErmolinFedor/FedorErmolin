@@ -1,8 +1,6 @@
 package hw5.pages;
 
 import hw5.beans.Color;
-import hw5.pages.components.HeaderMenu;
-import hw5.pages.components.LeftSideMenu;
 import hw5.pages.components.RightSideBar;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -16,13 +14,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class DifferentElementsPage {
+public class DifferentElementsPage extends BaseElements{
 
     private WebDriver driver;
 
-    private LeftSideMenu leftSideMenu;
     private RightSideBar rightSideBar;
-    private HeaderMenu headerMenu;
 
     @FindBy(css = ".checkbox-row .label-checkbox")
     private List<WebElement> checkboxes;
@@ -66,16 +62,10 @@ public class DifferentElementsPage {
     }
 
     public DifferentElementsPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        leftSideMenu = new LeftSideMenu(driver);
         rightSideBar = new RightSideBar(driver);
-        headerMenu = new HeaderMenu(driver);
-    }
-
-    @Step("Navigate to Left side menu")
-    public LeftSideMenu getLeftSideMenu() {
-        return leftSideMenu;
     }
 
     @Step("Navigate to Right side")
@@ -142,7 +132,4 @@ public class DifferentElementsPage {
         select.selectByVisibleText(color.name());
     }
 
-    public HeaderMenu getHeaderMenu() {
-        return headerMenu;
-    }
 }

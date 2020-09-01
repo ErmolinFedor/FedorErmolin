@@ -1,7 +1,5 @@
 package hw5.pages;
 
-import hw5.pages.components.HeaderMenu;
-import hw5.pages.components.LeftSideMenu;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -13,20 +11,8 @@ import java.util.List;
 
 public class HomePage extends BaseElements {
 
-    private WebDriver driver;
-
-    private LeftSideMenu leftSideMenu;
-    private HeaderMenu headerMenu;
-
     private final static String url = "https://jdi-testing.github.io/jdi-light/index.html";
-
-    public HomePage(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-        leftSideMenu = new LeftSideMenu(driver);
-        headerMenu = new HeaderMenu(driver);
-    }
+    private WebDriver driver;
 
     @FindBy(className = "profile-photo")
     private WebElement profilePhoto;
@@ -55,14 +41,13 @@ public class HomePage extends BaseElements {
     @FindBy(id = "second_frame")
     private WebElement secondFrame;
 
-    @FindBy(css = "[class='text-center'] a")
-    private WebElement subHeaderText;
 
-    @FindBy(id = "mCSB_1")
-    private WebElement leftSection;
 
-    @FindBy(tagName = "footer")
-    private WebElement footer;
+    public HomePage(WebDriver driver) {
+        super(driver);
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     public String getTitle() {
         return driver.getTitle();
@@ -109,33 +94,4 @@ public class HomePage extends BaseElements {
         return new SecondFrame(driver);
     }
 
-    public String getSubHeaderText() {
-        return subHeaderText.getText();
-    }
-
-    @Step("JDI GITHUB link is displayed")
-    public boolean isDisplayedLink() {
-        return subHeaderText.isDisplayed();
-    }
-
-    @Step("JDI GITHUB has a proper URL")
-    public String getSubHeaderLink() {
-        return subHeaderText.getAttribute("href");
-    }
-
-    public boolean isDisplayedLeftSection() {
-        return leftSection.isDisplayed();
-    }
-
-    public boolean isDisplayedFooter() {
-        return footer.isDisplayed();
-    }
-
-    public LeftSideMenu getLeftSideMenu() {
-        return leftSideMenu;
-    }
-
-    public HeaderMenu getHeaderMenu() {
-        return headerMenu;
-    }
 }

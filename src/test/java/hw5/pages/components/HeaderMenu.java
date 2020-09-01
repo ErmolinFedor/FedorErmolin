@@ -13,14 +13,8 @@ public class HeaderMenu {
 
     private WebDriver driver;
 
-    public HeaderMenu(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-
     @FindBy(xpath = "//a[contains(text(), 'Service')]")
     private WebElement service;
-
 
     @FindBy(css = "ul.dropdown-menu li")
     private List<WebElement> serviceSub;
@@ -33,6 +27,11 @@ public class HeaderMenu {
 
     @FindBy(xpath = "//a[contains(text(), 'User Table')]")
     private WebElement userTableLink;
+
+    public HeaderMenu(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     @Step("Navigate to header, click Service")
     public void clickServiceOnHeader() {

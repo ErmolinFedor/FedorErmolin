@@ -1,6 +1,8 @@
 package hw5.pages;
 
+import hw5.pages.components.HeaderMenu;
 import hw5.pages.components.LeftSideMenu;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,50 +15,56 @@ public class BaseElements {
     private WebDriver driver;
 
     private LeftSideMenu leftSideMenu;
+    private HeaderMenu headerMenu;
+
+    @FindBy(css = "[class='text-center'] a")
+    private WebElement subHeaderText;
+
+    @FindBy(id = "mCSB_1")
+    private WebElement leftSection;
+
+    @FindBy(tagName = "footer")
+    private WebElement footer;
 
     public BaseElements(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         leftSideMenu = new LeftSideMenu(driver);
+        headerMenu = new HeaderMenu(driver);
     }
 
-    @FindBy(css = "img#epam-logo")
-    private WebElement logo;
-
-    @FindBy(xpath = "//a[contains(text(), 'Service')]")
-    private WebElement service;
-
-    @FindBy(css = "ul.dropdown-menu li")
-    private WebElement serviceItemsLocator;
-
-    @FindBy(xpath = "//a[contains(text(), 'Different elements')]")
-    private WebElement differentElements;
-
-    @FindBy(id = "user-name")
-    private WebElement userNameText;
-
-    @FindBy(css = "[class='uui-navigation nav navbar-nav m-l8']")
-    private WebElement headerItems;
-
-    public List<WebElement> getServiceItems() {
-        return null;
+    @Step("Navigate to Left side menu")
+    public LeftSideMenu getLeftSideMenu() {
+        return leftSideMenu;
     }
 
-    public String getUserName() {
-        return userNameText.getText().toUpperCase();
-    }
-
-    public String getTextHeaderItems() {
-        return headerItems.getText();
-    }
-
-    public boolean logoExists() {
-        return logo != null;
+    public HeaderMenu getHeaderMenu() {
+        return headerMenu;
     }
 
     public String getPageNameText() {
         return driver.getTitle();
     }
 
+    public String getSubHeaderText() {
+        return subHeaderText.getText();
+    }
 
+    @Step("JDI GITHUB link is displayed")
+    public boolean isDisplayedLink() {
+        return subHeaderText.isDisplayed();
+    }
+
+    @Step("JDI GITHUB has a proper URL")
+    public String getSubHeaderLink() {
+        return subHeaderText.getAttribute("href");
+    }
+
+    public boolean isDisplayedLeftSection() {
+        return leftSection.isDisplayed();
+    }
+
+    public boolean isDisplayedFooter() {
+        return footer.isDisplayed();
+    }
 }

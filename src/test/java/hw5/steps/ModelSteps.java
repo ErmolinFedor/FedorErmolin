@@ -14,8 +14,8 @@ public class ModelSteps {
     }
 
     @Given("I login as user {string}")
-    public void i_login_as_user(String string) {
-        User user = new User(string);
+    public void i_login_as_user(String username) {
+        User user = new User(username);
         homePage.logIn(user.getLogin(), user.getPassword());
     }
 

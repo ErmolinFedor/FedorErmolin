@@ -31,18 +31,18 @@ public class ActionSteps {
     }
 
     @When("Select checkboxes {string}")
-    public void select_checkboxes_Water_and_Wind(String string) {
-        differentElementsPage.selectCheckbox(string);
+    public void select_checkboxes(String checkbox) {
+        differentElementsPage.selectCheckbox(checkbox);
     }
 
     @When("Select radiobutton {string}")
-    public void select_radiobutton(String string) {
-        differentElementsPage.selectRadio(string);
+    public void select_radiobutton(String radiobutton) {
+        differentElementsPage.selectRadio(radiobutton);
     }
 
     @When("Select in dropdown {string}")
-    public void select_in_dropdown(String string) {
-        differentElementsPage.selectColor(Color.valueOf(string));
+    public void select_in_dropdown(String dropdown) {
+        differentElementsPage.selectColor(Color.valueOf(dropdown));
     }
 
     @When("I select vip checkbox for Sergey Ivan")

@@ -12,11 +12,6 @@ import java.util.List;
 public class LeftSideMenu {
     private WebDriver driver;
 
-    public LeftSideMenu(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-
     @FindBy(name = "navigation-sidebar")
     private WebElement navigationSideBar;
 
@@ -31,6 +26,11 @@ public class LeftSideMenu {
 
     @FindBy(css = "[class='menu-title'] li[index='8']")
     private WebElement differentElementLink;
+
+    public LeftSideMenu(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     public void clickService() {
         service.click();
