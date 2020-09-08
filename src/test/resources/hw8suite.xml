@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="chrome-tests">
+
+    <test name="ex1">
+        <classes>
+            <class name="hw8.JdiTests"></class>
+        </classes>
+    </test>
+
+</suite>
