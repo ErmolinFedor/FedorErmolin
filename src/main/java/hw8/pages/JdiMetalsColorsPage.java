@@ -6,7 +6,7 @@ import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.XPath;
 import com.epam.jdi.light.ui.html.elements.common.Button;
-import hw8.beans.Data;
+import hw8.beans.MetalsColors;
 import hw8.forms.MetalsColorsForm;
 import io.qameta.allure.Step;
 
@@ -29,8 +29,9 @@ public class JdiMetalsColorsPage extends WebPage {
     }
 
     @Step("Fill form Metals & Colors by data below: {data}")
-    public void fillMetalsColorsForm(Data data) {
-        metalsColorsForm.fill(data);
+    public void fillMetalsColorsForm(MetalsColors metalsColors) {
+        metalsColorsForm.fill(metalsColors);
+        submitButton.click();
     }
 
     public List<String> getLogListResults() {
@@ -38,4 +39,5 @@ public class JdiMetalsColorsPage extends WebPage {
                 .map(UIElement::getText)
                 .collect(Collectors.toList());
     }
+
 }

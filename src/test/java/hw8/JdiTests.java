@@ -1,12 +1,13 @@
 package hw8;
 
-import hw8.beans.Data;
+import hw8.beans.MetalsColors;
 import hw8.data.MetalsColorsData;
 import io.qameta.allure.Step;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import static hw8.JdiSite.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -27,26 +28,22 @@ public class JdiTests {
         killAllSeleniumDrivers();
     }
 
-    @Test(priority =0)
-    public void logIn() {
-        JdiSite.open();
-        JdiSite.jdiHomePage.login(ROMAN);
-        JdiSite.jdiHomePage.userName.is().text(ROMAN.getName());
-    }
 
-
-    @Test(priority = 1, dataProvider = "MetalsColorsToDo", dataProviderClass =MetalsColorsData.class)
-    public void jdiMetalsColorsTest(Data data, List<String> expectedList) {
-        JdiSite.jdiHomePage.clickMetalsColors();
-        JdiSite.jdiMetalsColorsPage.checkOpened();
-        JdiSite.jdiMetalsColorsPage.fillMetalsColorsForm(data);
-        JdiSite.jdiMetalsColorsPage.clickSubmit();
+    @Test(dataProvider = "MetalsColorsToDo", dataProviderClass =MetalsColorsData.class)
+    public void jdiMetalsColorsTest(MetalsColors metalsColors, List<String> expectedList) {
+        open();
+        jdiHomePage.login(ROMAN);
+        jdiHomePage.userName.is().text(ROMAN.getName());
+        jdiHomePage.clickMetalsColors();
+        jdiMetalsColorsPage.checkOpened();
+        jdiMetalsColorsPage.fillMetalsColorsForm(metalsColors);
         assertData(expectedList);
+        jdiHomePage.logout();
     }
 
     @Step("Result sections should contains data  below: {expectedList}")
     private void assertData(List<String> expectedList) {
-        List<String> actualList = JdiSite.jdiMetalsColorsPage.getLogListResults();
+        List<String> actualList = jdiMetalsColorsPage.getLogListResults();
         assertThat(actualList, equalTo(expectedList));
     }
 

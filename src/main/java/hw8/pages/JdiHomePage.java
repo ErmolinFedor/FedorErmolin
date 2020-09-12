@@ -19,12 +19,20 @@ public class JdiHomePage extends WebPage {
     @XPath("//a[contains(text(), 'Metals & Colors')]")
     public Button metalsColors;
 
+    @Css(".logout button")
+    private Button logout;
+
     private JdiLoginForm jdiLoginForm;
 
     @Step("Login on JDI site as User")
     public void login(User user) {
         userIcon.click();
         jdiLoginForm.login(user);
+    }
+
+    public void logout() {
+        userIcon.click();
+        logout.click();
     }
 
     public String getUserName() {

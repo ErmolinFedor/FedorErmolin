@@ -6,9 +6,9 @@ import com.epam.jdi.light.elements.composite.Form;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.XPath;
 import com.epam.jdi.light.ui.html.elements.common.Button;
-import hw8.beans.Data;
+import hw8.beans.MetalsColors;
 
-public class MetalsColorsForm extends Form<Data> {
+public class MetalsColorsForm extends Form<MetalsColors> {
     @XPath("//*[@id='summary-block']//label")
     private WebList summaryRadiobuttons;
 
@@ -34,13 +34,13 @@ public class MetalsColorsForm extends Form<Data> {
     private WebList vegetablesDropdown;
 
     @Override
-    public void fill(final Data data) {
-        data.getSummary().forEach(summary -> summaryRadiobuttons.select(Integer.toString(summary)));
-        data.getElements().forEach(elementsCheckboxes::select);
-        super.fill(data);
+    public void fill(final MetalsColors metalsColors) {
+        metalsColors.getSummary().forEach(summary -> summaryRadiobuttons.select(Integer.toString(summary)));
+        metalsColors.getElements().forEach(elementsCheckboxes::select);
+        super.fill(metalsColors);
         vegetablesDropdownExpander.click();
         vegetablesDropdown.select("Vegetables");
-        data.getVegetables().forEach(vegetablesDropdown::select);
+        metalsColors.getVegetables().forEach(vegetablesDropdown::select);
     }
 
 }
