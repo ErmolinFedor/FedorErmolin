@@ -40,4 +40,5 @@ public class JdiMetalsColorsPage extends WebPage {
                 .collect(Collectors.toList());
     }
 
+
 }
