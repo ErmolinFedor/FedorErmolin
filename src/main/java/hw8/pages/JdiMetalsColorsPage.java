@@ -34,6 +34,7 @@ public class JdiMetalsColorsPage extends WebPage {
         submitButton.click();
     }
 
+
     public List<String> getLogListResults() {
         return results.stream()
                 .map(UIElement::getText)
