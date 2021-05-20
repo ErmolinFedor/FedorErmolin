@@ -29,15 +29,12 @@ public class MetalsColors {
     public void setSummary(List<Integer> summary) {
         this.summary = summary;
     }
-
     public List<String> getElements() {
         return elements;
     }
-
     public void setElements(List<String> elements) {
         this.elements = elements;
     }
-
     public String getColor() {
         return color;
     }
