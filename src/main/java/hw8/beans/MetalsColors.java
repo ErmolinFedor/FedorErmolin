@@ -23,11 +23,9 @@ public class MetalsColors {
     @SerializedName("vegetables")
     @Expose
     private List<String> vegetables = new ArrayList<String>();
-
     public List<Integer> getSummary() {
         return summary;
     }
-
     public void setSummary(List<Integer> summary) {
         this.summary = summary;
     }
