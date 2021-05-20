@@ -41,11 +41,9 @@ public class MetalsColors {
     public void setColor(String color) {
         this.color = color;
     }
-
     public String getMetals() {
         return metals;
     }
-
     public void setMetals(String metals) {
         this.metals = metals;
     }
