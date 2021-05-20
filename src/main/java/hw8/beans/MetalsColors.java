@@ -44,7 +44,6 @@ public class MetalsColors {
     public String getMetals() {
         return metals;
     }
-
     public void setMetals(String metals) {
         this.metals = metals;
     }
